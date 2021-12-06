@@ -14,11 +14,6 @@ export const Header = () => {
                               <li className="navbar__item mx-3"><Link className="navbar__link" to='/'>All Books</Link></li>
                               <li className="navbar__item"><Link className="navbar__link" to='/add-book'>Add Book</Link></li>
                         </ul>
-
-                        <ul className="navbar">
-                              <li className="navbar__item mx-3"><Link className="navbar__link" to='/sign-in'>Sign In</Link></li>
-                              <li className="navbar__item"><Link className="navbar__link" to='/sign-up'>Sign Up</Link></li>
-                        </ul>
                   </div>
             </header>
       )
