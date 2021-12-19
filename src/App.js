@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import './App.css';
 
@@ -7,10 +7,14 @@ import { Header } from './components/Header/Header';
 import { BooksList } from './components/BooksList/BooksList';
 import { BookForm } from './components/BookForm/BookForm';
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 
+import { AuthContext } from "./context/AuthContext"
+import { SignInPage } from './pages/SignInPage/SignInPage';
 
 function App() {
+  const { token } = useContext(AuthContext)
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -18,9 +22,13 @@ function App() {
 
         <div className="container">
           <Routes>
-            <Route path='/' element={<BooksList />} />
-            <Route path='/add-book' element={<BookForm />} />
-            <Route path='/edit-book/:id' element={<BookForm />} />
+            <Route path='/' element={<Navigate to='/sign-in' />}/>
+
+            <Route path='sign-in' element={<SignInPage />} />
+
+            <Route path='/books' element={<BooksList />} />
+            <Route path='/books/add-book' element={<BookForm />} />
+            <Route path='/books/edit-book/:id' element={<BookForm />} />
           </Routes>
         </div>
       </BrowserRouter>

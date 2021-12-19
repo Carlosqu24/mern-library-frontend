@@ -10,7 +10,7 @@ export const BooksList = () => {
 
       useEffect(() => {
             const getBooks = async () => {
-                  const res = await fetch('http://localhost:9000/api/books');
+                  const res = await fetch('http://localhost:9500/api/books');
                   const data = await res.json();
 
                   setBooksList(data);
@@ -20,7 +20,7 @@ export const BooksList = () => {
       }, []);
 
       const handleDelete = async (id) => {
-            const deletedBook = await fetch(`http://localhost:9000/api/books/delete/${id}`, {
+            const deletedBook = await fetch(`http://localhost:9500/api/books/delete/${id}`, {
                   method: 'DELETE',
                   headers: {
                         'Content-Type': 'application/json'
