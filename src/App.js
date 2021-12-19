@@ -6,11 +6,11 @@ import './App.css';
 import { Header } from './components/Header/Header';
 import { BooksList } from './components/BooksList/BooksList';
 import { BookForm } from './components/BookForm/BookForm';
+import { AuthForm } from './components/AuthForm/AuthForm'
 
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 
 import { AuthContext } from "./context/AuthContext"
-import { SignInPage } from './pages/SignInPage/SignInPage';
 
 function App() {
   const { token } = useContext(AuthContext)
@@ -24,7 +24,8 @@ function App() {
           <Routes>
             <Route path='/' element={<Navigate to='/sign-in' />}/>
 
-            <Route path='sign-in' element={<SignInPage />} />
+            <Route path='sign-in' element={<AuthForm type="Sign In" />} />
+            <Route path='sign-up' element={<AuthForm type="Sign Up" />} />
 
             <Route path='/books' element={<BooksList />} />
             <Route path='/books/add-book' element={<BookForm />} />

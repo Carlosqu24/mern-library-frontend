@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 
 import './AuthForm.css'
 
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { AuthContext } from '../../context/AuthContext'
 
@@ -74,6 +74,10 @@ export const AuthForm = ({ type }) => {
                                     <input onChange={handleChange} className="form-control" type="text" name="username" placeholder="Username" />
                               </div>
                         )
+                  }
+
+                  {
+                        type == "Sign Up" ? <Link className="mb-3" to='/sign-in'>Do you have an account?</Link> : <Link className="mb-3" to='/sign-up'>Create an account</Link>
                   }
 
                   <div className="form-group">
