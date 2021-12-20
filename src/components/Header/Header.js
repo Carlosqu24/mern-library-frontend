@@ -12,14 +12,14 @@ export const Header = () => {
       return (
             <header className="header bg-dark text-white">
                   <div className="container d-flex justify-content-between py-3">
-                        <Link to="/books" className="h2" >Library App</Link>
+                        <h2 to="/books" className="h2" >Library App</h2>
 
                         <ul className="navbar">
                               {
                                     token && (
                                           <>
                                                 <li className="navbar__item mx-3"><Link className="navbar__link" to='/books'>All Books</Link></li>
-                              <li className="navbar__item"><Link className="navbar__link" to='/books/add-book'>Add Book</Link></li>
+                                                <li className="navbar__item"><Link className="navbar__link" to='/books/add-book'>Add Book</Link></li>
                                           </>
                                     )
                               }
