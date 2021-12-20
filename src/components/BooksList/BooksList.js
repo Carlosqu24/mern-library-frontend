@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
+
+import { AuthContext } from '../../context/AuthContext';
 
 import './BooksList.css'
 
@@ -7,6 +9,8 @@ export const BooksList = () => {
       const [booksList, setBooksList] = useState([]);
 
       const navigate = useNavigate();
+
+      const { token } = useContext(AuthContext)
 
       useEffect(() => {
             const getBooks = async () => {
@@ -23,11 +27,12 @@ export const BooksList = () => {
             const deletedBook = await fetch(`http://localhost:9500/api/books/delete/${id}`, {
                   method: 'DELETE',
                   headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'x-access-token': token
                   }
             });
 
-            navigate('/')
+            navigate('/books')
       };
 
       return (

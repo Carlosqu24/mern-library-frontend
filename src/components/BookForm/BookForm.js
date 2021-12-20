@@ -1,11 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+
 import { useNavigate, useParams } from 'react-router-dom';
+
+import { AuthContext } from '../../context/AuthContext';
 
 export const BookForm = () => {
       const [form, setForm] = useState({})
 
       const navigate = useNavigate();
       const { id } = useParams();
+
+      const { token } = useContext(AuthContext)
 
       const handleChange = (e) => {
             setForm({
@@ -22,7 +27,7 @@ export const BookForm = () => {
                   method: 'POST',
                   headers: {
                               'Content-Type': 'application/json',
-                              // 'x-access-token': 
+                              'x-access-token': token
                         },
                         body: JSON.stringify(form)
                   });
@@ -34,7 +39,8 @@ export const BookForm = () => {
                   const res = await fetch('http://localhost:9500/api/books/edit/' + id, {
                   method: 'PUT',
                   headers: {
-                              'Content-Type': 'application/json'
+                              'Content-Type': 'application/json',
+                              'x-access-token': token
                         },
                         body: JSON.stringify(form)
                   });
@@ -44,7 +50,7 @@ export const BookForm = () => {
 
             id ? editBook(id) : saveBook() 
 
-            navigate('/')
+            navigate('/books')
       }
 
       return (
